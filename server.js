@@ -26,6 +26,7 @@ var server = http.createServer(function (request, response) {
   response.statusCode = 200;
   // 默认首页
   const filePath = path === "/" ? "/index.html" : path;
+  //xx.html xxx.css xxxx.js 得到 . 的下标
   const index = filePath.lastIndexOf(".");
   // suffix 是后缀
   const suffix = filePath.substring(index);
@@ -36,6 +37,7 @@ var server = http.createServer(function (request, response) {
     ".png": "image/png",
     ".jpg": "image/jpeg",
   };
+  //如果写的后缀不是上面五个中的任何一个，就默认是 .html
   response.setHeader(
     "Content-Type",
     `${fileTypes[suffix] || "text/html"};charset=utf-8`
